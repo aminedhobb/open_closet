@@ -1,0 +1,8 @@
+<%= simple_form_for @product, :html => { :multipart => true } do |f| %>
+  <%= f.input :title %>
+  <%= f.input :category, collection: ["shirt", "pull", "jean", "bag", "shoes", "costume"] %>
+  <%= f.input :price_cents, placeholder: "in cents", label: "Price" %>
+  <%= f.input :address, input_html: {id: "product_address"} %>
+  <%= f.input :description %>
+  <%= f.button :submit, class: "btn btn-primary", value: "Add product" %>
+<% end %>
