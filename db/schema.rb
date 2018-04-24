@@ -12,11 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20180424151803) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.string "status"
+    t.string "status", default: "Pending"
     t.integer "amount_cents"
     t.date "start_date"
     t.date "end_date"
