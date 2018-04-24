@@ -3,20 +3,29 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @products = Product.all
+    authorize @products
   end
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def create
     @product = Product.new(product_params)
     @product.user = current_user
+
     if @product.save
-      redirect_to product_path(@product)
+      unless params[:product]["photos"].nil?
+        params[:product]["photos"]["photo"].each do |a|
+          @product_image = @product.product_images.create!(:photo => a)
+        end
+      end
+      redirect_to products_path
     else
       render :new
     end
+    authorize @product
   end
 
 
@@ -25,7 +34,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :category, :price, :address, :description)
+    params.require(:product).permit(:title, :category, :price_cents, :address, :description, :gender, product_images_attributes: [:id, :product_id, :photo])
   end
 
   def set_product

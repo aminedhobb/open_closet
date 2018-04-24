@@ -1,8 +1,22 @@
+
 <%= simple_form_for @product, :html => { :multipart => true } do |f| %>
-  <%= f.input :title %>
-  <%= f.input :category, collection: ["shirt", "pull", "jean", "bag", "shoes", "costume"] %>
-  <%= f.input :price_cents, placeholder: "in cents", label: "Price" %>
-  <%= f.input :address, input_html: {id: "product_address"} %>
-  <%= f.input :description %>
-  <%= f.button :submit, class: "btn btn-primary", value: "Add product" %>
+<div class="row">
+  <div class="col-xs-7">
+    <%= f.input :title %>
+    <%= f.input :category, collection: ["Shirt", "Sweater", "Pant", "Bag", "Shoes", "Costume"] %>
+    <%= f.input :price_cents, placeholder: "in cents", label: "Price" %>
+    <%= f.input :address, input_html: {id: "product_address"} %>
+    <%= f.input :description %>
+    <%= f.input :gender, collection: ["Men", "Women", "Unisex"] %>
+    <%= f.button :submit, class: "btn btn-primary", value: "Add product" %>
+  </div>
+  <div class="col-xs-5 form-product-photo">
+    <%= f.fields_for :photos do |p| %>
+      <%= p.label :photos %>
+      <%= p.file_field :photo, :multiple => true %>
+    <% end %>
+  </div>
+</div>
 <% end %>
+
+
