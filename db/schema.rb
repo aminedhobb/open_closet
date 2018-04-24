@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424111731) do
+ActiveRecord::Schema.define(version: 20180424161113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.string "status", default: "Pending"
+    t.string "status", default: "pending_card"
     t.integer "amount_cents"
     t.date "start_date"
     t.date "end_date"
