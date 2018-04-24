@@ -4,4 +4,12 @@ class ProductPolicy < ApplicationPolicy
       scope
     end
   end
+
+  def create?
+    true
+  end
+
+  def index?
+    true
+  end
 end

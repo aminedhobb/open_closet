@@ -1,0 +1,12 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-6 col-sm-offset-3">
+      <h1 class="text-center"> All the products </h1>
+      <ul>
+        <% @products.each do |product| %>
+        <li> <%= link_to product.title, product_path(product) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

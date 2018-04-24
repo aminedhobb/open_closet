@@ -10,12 +10,14 @@ gem 'stripe'
 
 #Geolocalisation
 gem 'geocoder'
+
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.1.6'
 gem 'redis'
+gem 'geocoder'
 gem 'devise'
 
 gem 'autoprefixer-rails'
