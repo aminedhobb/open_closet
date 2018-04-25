@@ -1,14 +1,10 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @products = Product.all
     authorize @products
-  end
-
-  def show
-    @order = Order.new
-    authorize @product
   end
 
   def new
@@ -33,8 +29,9 @@ class ProductsController < ApplicationController
     authorize @product
   end
 
-
   def show
+
+    @order = Order.new
     @product_images = @product.product_images
     @markers =
       [{
@@ -44,7 +41,6 @@ class ProductsController < ApplicationController
       }]
     authorize @product
   end
-
 
   private
 

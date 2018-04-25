@@ -8,9 +8,6 @@ gem 'pundit'
 gem 'money-rails'
 gem 'stripe'
 
-#Geolocalisation
-gem 'geocoder'
-
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
