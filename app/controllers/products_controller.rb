@@ -30,6 +30,14 @@ class ProductsController < ApplicationController
 
 
   def show
+    @product_images = @product.product_images
+    @markers =
+      [{
+        lat: @product.latitude,
+        lng: @product.longitude,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }]
+    authorize @product
   end
 
 
