@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <div class="product-infos-container">
+        <h2 class="text-center"> <%= @product.title.capitalize %> </h2>
+        <div class="row">
+          <div class="col-xs-4">
+            <%= render 'carrousel' %>
+          </div>
+          <div class="col-xs-5">
+            <div id="map" style="width: 100%; height: 300px;" data-markers="<%= @markers.to_json %>">
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="form-rent-container">
+              <%= render 'order_form' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-9">
+            <div class="description-container">
+              <div class="user-infos">
+              <%= image_tag "https://vignette.wikia.nocookie.net/fr.starwars/images/3/39/Jabba_le_Hutt.png/revision/latest?cb=20170818180549", class: "avatar" %>
+                 <%= @product.user.first_name %>  <%= @product.created_at.strftime("%d/%m/%Y") %>
+              </div>
+              <div class="product-description text-center">
+              "<%= @product.description %>""
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

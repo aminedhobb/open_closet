@@ -4,4 +4,5 @@ class Order < ApplicationRecord
   has_one :review
   validates :start_date, presence: true
   validates :end_date, presence: true
+  monetize :amount_cents
 end

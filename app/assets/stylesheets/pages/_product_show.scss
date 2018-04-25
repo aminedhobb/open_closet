@@ -1,0 +1,36 @@
+.product-infos-container {
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+  background-color: white;
+  .btn-primary {
+    width: 100%;
+  }
+  .form-rent-container {
+    border: 1px solid #dce0e0;
+    padding: 20px;
+  }
+}
+
+.avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.description-container {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  padding:20px;
+  background-color: rgba(220,220,220,0.5);
+  font-weight: 200;
+  font-size: 15px;
+  .product-description {
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 300;
+  }
+}
+

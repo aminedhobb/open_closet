@@ -4,8 +4,9 @@ ruby '2.4.3'
 gem 'faker'
 gem 'pundit'
 
-#Geolocalisation
-gem 'geocoder'
+#money money money
+gem 'money-rails'
+gem 'stripe'
 
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'

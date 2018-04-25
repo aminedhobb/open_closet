@@ -11,4 +11,5 @@ class Product < ApplicationRecord
   validates :address, presence: true
   validates :price_cents, presence: true
   validates :gender, presence: true, inclusion: {in: ['Women', 'Men', 'Unisex']}
+  monetize :price_cents
 end
