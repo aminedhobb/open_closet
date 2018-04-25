@@ -3,15 +3,19 @@
     <div class = "row">
       <% @products.each do |product| %>
       <% unless  product.product_images.empty? %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card" style="background-image: <%= product.product_images.first.photo_url %>;">
+        <%= link_to product_path(product) do %>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="card" style="background-image: url(<%= product.product_images.first.photo_url %>);" >
+
                 <%= product.title %>
             </div>
         </div>
         <% end %>
+        <% end %>
       <% end %>
-      <div id="map" style="position: relative; overflow: hidden;">
-      </div>
+
     </div>
+  </div>
+  <div id="map" data-markers="<%= @markers.to_json %>">
   </div>
 </div>

@@ -4,12 +4,24 @@ class ProductsController < ApplicationController
 
   def index
     if params[:city].present?
-      @products = Product.near(params[:city],50)
+      @products = Product.near(params[:city], 50)
     else
       @products = Product.all
     end
+
+    @markers = @products.map do |product|
+      {
+        lat: product.latitude,
+        lng: product.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
+
+
     authorize @products
   end
+
+
 
   def new
     @product = Product.new
@@ -32,6 +44,16 @@ class ProductsController < ApplicationController
       render :new
     end
     authorize @product
+  end
+
+  def edit
+    authorize @product
+  end
+
+  def update
+    @product.update(product_params)
+    @product.price_cents *= 100
+   redirect_to product_path(@product)
   end
 
   def show
