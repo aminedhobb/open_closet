@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
       }
     end
 
+
     authorize @products
   end
 
@@ -29,8 +30,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.user = current_user
     @product.price_cents *= 100
+    @product.user = current_user
 
     if @product.save
       unless params[:product]["photos"].nil?
