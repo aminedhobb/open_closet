@@ -4,9 +4,6 @@ class OrdersController < ApplicationController
     @orders = Order.where(user: current_user)
   end
 
-  def new
-  end
-
   def create
     @order = Order.new(order_params)
     @order.user = current_user
@@ -17,35 +14,49 @@ class OrdersController < ApplicationController
     authorize @order
   end
 
-  def edit
-  end
-
   def show
     @order = Order.find(params[:id])
-    @owner = @order.product.user
+    @owner = @order.product.user.first_name
     authorize @order
+
+    if current_user == @order.user && @order.status == "pending_card"
+      render 'show_renter'
+    elsif current_user == @order.user && @order.status == "pending_acceptance"
+      render 'show_renter_pending_acceptance'
+    elsif current_user == @order.user && @order.status == "accepted"
+      render 'show_renter_accepted'
+    elsif current_user == @order.user && @order.status == "refused"
+      render 'show_renter_refuse'
+    elsif current_user == @order.product.user && @order.status == "pending_card"
+      render 'show_owner'
+    elsif current_user == @order.product.user && @order.status == "pending_acceptance"
+      render'show_owner_pending_acceptance'
+    elsif current_user == @order.product.user && @order.status == "accepted"
+      render 'show_owner_accepted'
+    elsif current_user == @order.product.user && @order.status == "refused"
+      render 'show_owner_refused'
+    end
+    #   current_user == @order.user && @order.status == "pending_acceptance"
+    # elsif
+    #   current_user == @order.user
   end
 
   def update
-
-    # charge = Stripe::Charge.create(
-  #   customer:     customer.id,   # You should store this customer id and re-use it.
-  #   amount:       @order.amount_cents,
-  #   description:  "Payment for product #{@order.product_id} for order #{@order.id}",
-  #   currency:     @order.amount.currency
-  # )
-  # @order.update(payment: charge.to_json, state: 'paid')
-  # redirect_to order_path(@order)
-
-  # rescue Stripe::CardError => e
-  # flash[:alert] = e.message
-  # redirect_to new_order_payment_path(@order)
+    @order = Order.find(params[:id])
+    if order_params[:status] == "Accepted"
+      @order.status = "accepted"
+    elsif order_params[:status] == "Refused"
+      @order.status = "refused"
+    end
+    @order.save
+    authorize @order
+    redirect_to order_path(@order)
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:start_date, :end_date, :product_id, :user)
+    params.require(:order).permit(:start_date, :end_date, :product_id, :user, :status)
   end
 
   def set_product
