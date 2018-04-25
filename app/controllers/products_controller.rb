@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @products = Product.all
+    if params[:city].present?
+      @products = Product.near(params[:city],50)
+    else
+      @products = Product.all
+    end
     authorize @products
   end
 
@@ -14,6 +18,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.price_cents *= 100
     @product.user = current_user
 
     if @product.save
