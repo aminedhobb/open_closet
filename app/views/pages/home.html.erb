@@ -3,7 +3,7 @@
     <h1>Open Closet</h1>
     <p> Have everything to wear for your next trip</p>
     <%= form_tag products_path, class: 'form-inline', method: :get do %>
-    <%= text_field_tag :city, params[:city], class: "form-control", placeholder: "Destination, Address ...", id: "product_address"%>
+    <%= text_field_tag :city, params[:city], class: "form-control home-search", placeholder: "Destination, City, Address ...", id: "product_address"%>
     <%= submit_tag("Search", class: "btn btn-secondary") %>
     <% end %>
   </div>
