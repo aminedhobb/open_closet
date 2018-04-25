@@ -30,7 +30,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-
     @order = Order.new
     @product_images = @product.product_images
     @markers =

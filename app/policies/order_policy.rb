@@ -3,6 +3,10 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    user == record.product.user
+  end
+
   class Scope < Scope
     def resolve
       scope
