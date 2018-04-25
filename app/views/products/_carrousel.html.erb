@@ -1,0 +1,14 @@
+<% unless @product_images.empty? %>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="item active" style="height: 400px">
+        <%= image_tag(@product_images.first.photo_url) %>
+      </div>
+      <% @product_images.drop(1).each do |p| %>
+      <div class="item" style="height: 400px">
+        <%= image_tag(p.photo_url) %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
