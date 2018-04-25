@@ -5,6 +5,10 @@ class ProductPolicy < ApplicationPolicy
     end
   end
 
+  def update?
+    user == record.user
+  end
+
   def create?
     true
   end
