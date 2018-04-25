@@ -4,6 +4,10 @@ ruby '2.4.3'
 gem 'faker'
 gem 'pundit'
 
+#money money money
+gem 'money-rails'
+gem 'stripe'
+
 #Geolocalisation
 gem 'geocoder'
 

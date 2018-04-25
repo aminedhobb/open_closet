@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180424151803) do
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.string "status", default: "Pending"
+    t.string "status", default: "pending_card"
     t.integer "amount_cents"
     t.date "start_date"
     t.date "end_date"

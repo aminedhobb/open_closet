@@ -6,6 +6,11 @@ class ProductsController < ApplicationController
     authorize @products
   end
 
+  def show
+    @order = Order.new
+    authorize @product
+  end
+
   def new
     @product = Product.new
     authorize @product
