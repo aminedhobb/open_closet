@@ -3,9 +3,24 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @products = Product.all
+    if params[:city].present?
+      @products = Product.near(params[:city], 50)
+    else
+      @products = Product.all
+    end
+
+    @markers = @products.map do |product|
+      {
+        lat: product.latitude,
+        lng: product.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
+    end
+
     authorize @products
   end
+
+
 
   def new
     @product = Product.new
@@ -15,6 +30,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = current_user
+    @product.price_cents *= 100
 
     if @product.save
       unless params[:product]["photos"].nil?
@@ -27,6 +43,16 @@ class ProductsController < ApplicationController
       render :new
     end
     authorize @product
+  end
+
+  def edit
+    authorize @product
+  end
+
+  def update
+    @product.update(product_params)
+    @product.price_cents *= 100
+   redirect_to product_path(@product)
   end
 
   def show
