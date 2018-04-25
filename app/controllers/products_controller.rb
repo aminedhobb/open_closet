@@ -53,7 +53,13 @@ class ProductsController < ApplicationController
   def update
     @product.update(product_params)
     @product.price_cents *= 100
-   redirect_to product_path(@product)
+    unless params[:product]["photos"].nil?
+        params[:product]["photos"]["photo"].each do |a|
+          @product_image = @product.product_images.create!(:photo => a)
+      end
+    end
+    authorize @product
+    redirect_to product_path(@product)
   end
 
   def show
