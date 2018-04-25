@@ -1,12 +1,17 @@
-<div class = "container">
-  <div class = "row">
-    <div class = "col-sm-6 col-sm-offset-3">
-      <h1 class="text-center"> All the products </h1>
-      <ul>
-        <% @products.each do |product| %>
-        <li> <%= link_to product.title, product_path(product) %></li>
+<div class="index-content">
+  <div class="cards-container">
+    <div class = "row">
+      <% @products.each do |product| %>
+      <% unless  product.product_images.empty? %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card" style="background-image: <%= product.product_images.first.photo_url %>;">
+                <%= product.title %>
+            </div>
+        </div>
         <% end %>
-      </ul>
+      <% end %>
+      <div id="map" style="position: relative; overflow: hidden;">
+      </div>
     </div>
   </div>
 </div>
