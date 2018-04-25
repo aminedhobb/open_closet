@@ -1,0 +1,8 @@
+<p><%= @product.title %></p>
+<%= simple_form_for(@order, method: :post, url: orders_path) do |f| %>
+  <%= f.input :product_id, :as => :hidden, :input_html => { :value => @product.id } %>
+  <%= f.input :start_date, as: :date, html5: true, placeholder: Date.today %>
+  <%= f.input :end_date, as: :date, html5: true, placeholder: Date.today + 1%>
+  <p>Price per day: <%= humanized_money_with_symbol(@product.price) %></p>
+  <%= f.submit'Rent', class: 'btn btn-primary' %>
+<% end %>
