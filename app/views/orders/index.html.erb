@@ -1,6 +1,8 @@
 <div class="container">
+  <h2><%= link_to "Received orders as an owner", owner_orders_path %></h2>
+
   <% if @orders.empty? %>
-    <h1>You have no order yet ! Here you can see <%= link_to "our products", products_path %></h1>
+    <h1>You haven't place any order yet ! Here you can see <%= link_to "our products", products_path %></h1>
     <% else %>
   <h1>My orders</h1>
   <table>
