@@ -17,7 +17,7 @@ users = [
     first_name:'Jabba',
     last_name:'LeHutt',
     email:'jabbalehutt@starwars.com',
-    password:'bakjaelj',
+    password:'jabbajabba',
   },
   {
     first_name: 'Sebulba',
