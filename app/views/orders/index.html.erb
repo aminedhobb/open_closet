@@ -1,0 +1,23 @@
+<div class="container">
+  <h2><%= link_to "Received orders as an owner", owner_orders_path %></h2>
+
+  <% if @orders.empty? %>
+    <h1>You haven't place any order yet ! Here you can see <%= link_to "our products", products_path %></h1>
+    <% else %>
+  <h1>My orders</h1>
+  <table>
+    <% @orders.each do |order| %>
+    <tr>
+      <td>Commande effectuée le <%= order.created_at %></td>
+      <td>Total : <%=  humanized_money_with_symbol(order.amount) %></td>
+      <td>Status : <%= order.status %></td>
+      <td>Order n° : <%= order.id %></td>
+    </tr>
+    <tr>
+      <td>Product : <%= order.product.title %></td>
+      <td>Description : <%= order.product.description %></td>
+    </tr>
+    <% end %>
+  </table>
+  <% end %>
+</div>
