@@ -26,7 +26,6 @@ class ProductsController < ApplicationController
       }
     end
 
-
     authorize @products
   end
 
@@ -49,7 +48,6 @@ class ProductsController < ApplicationController
         end
       end
       flash[:notice] = "Your product is now online!"
-
       redirect_to product_path(@product)
     else
       render :new

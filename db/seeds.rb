@@ -94,6 +94,15 @@ products = [
     price_cents: '1000',
     gender: 'Men',
     user_id: User.first.id
+  },
+  {
+    title: 'sac prada',
+    category: 'Bag',
+    description: 'beautiful bag',
+    address: 'New York',
+    price_cents: '2000',
+    gender: 'Women',
+    user_id: User.first.id
   }
 
 ]

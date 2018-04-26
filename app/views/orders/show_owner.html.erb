@@ -7,10 +7,12 @@
           <div class="card-subtitle"><%= @order.user.first_name.capitalize %> <%= @order.user.last_name.capitalize %></div>
           <%= simple_form_for(@order, method: :patch) do |f| %>
             <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
+            <%= f.input :redirect_path, :as => :hidden, :input_html => { :value => "show"}  %>
             <%= f.submit'Accept', class: 'btn btn-success' %>
           <% end %>
           <%= simple_form_for(@order, method: :patch) do |f| %>
             <%= f.input :status, :as => :hidden, :input_html => { :value => "Refused" } %>
+            <%= f.input :redirect_path, :as => :hidden, :input_html => { :value => "show"}  %>
             <%= f.submit'Refuse', class: 'btn btn-danger' %>
           <% end %>
         </div>

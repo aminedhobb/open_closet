@@ -30,10 +30,11 @@
             </div>
           </div>
           <div class="col-xs-3">
-+           <% if policy(@product).update? %>
-+             <br>
-+             <%= link_to "Edit your product", edit_product_path(@product), class: "btn btn-primary" %>
-+           <% end %>
+           <% if policy(@product).update? %>
+             <br>
+            <%= link_to "Edit your product", edit_product_path(@product), class: "btn btn-primary" %>
+          <% end %>
+
         </div>
       </div>
     </div>
