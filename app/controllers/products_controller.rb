@@ -3,10 +3,15 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:city].present?
-      @products = Product.near(params[:city], 50)
+
+    if params[:address].present?
+      @products = Product.near(params[:address],50)
     else
       @products = Product.all
+    end
+
+    if params[:title_or_description].present?
+      @products = @products.search_by_title_and_description(params[:title_or_description])
     end
 
     @markers = @products.map do |product|
