@@ -33,7 +33,7 @@ products = [
     category: 'Sweater',
     description: 'magnifique pull rose',
     address: '33 rue de lourmel Paris',
-    price_cents: '20',
+    price_cents: '2000',
     gender: 'Men',
     user_id: 2
   },
@@ -42,7 +42,7 @@ products = [
     category: 'Shirt',
     description: 'magnifique chemise verte',
     address: 'rue imilchil Casablanca',
-    price_cents: '2',
+    price_cents: '200',
     gender: 'Unisex',
     user_id: 2
   },
@@ -51,7 +51,7 @@ products = [
     category: 'Bag',
     description: 'magnifique sac à main',
     address: 'rue de restinga Casablanca',
-    price_cents: '40',
+    price_cents: '4000',
     gender: 'Women',
     user_id: 2
   },
@@ -60,7 +60,7 @@ products = [
     category: 'Shoes',
     description: 'magnifique sac à main',
     address: 'rue curie Casablanca',
-    price_cents: '4',
+    price_cents: '400',
     gender: 'Men',
     user_id: 2
   },
@@ -69,7 +69,7 @@ products = [
     category: 'Costume',
     description: 'magnifique costard',
     address: 'boulevard zerktouni Casablanca',
-    price_cents: '50',
+    price_cents: '5000',
     gender: 'Men',
     user_id: 2
   },
@@ -78,7 +78,7 @@ products = [
     category: 'Pant',
     description: 'magnifique jean',
     address: 'rue deparcieux Paris',
-    price_cents: '4',
+    price_cents: '400',
     gender: 'Men',
     user_id: 2
   },
@@ -87,8 +87,17 @@ products = [
     category: 'Shirt',
     description: 'magnifique chemise',
     address: 'rue de rennes Paris',
-    price_cents: '10',
+    price_cents: '1000',
     gender: 'Men',
+    user_id: 2
+  },
+  {
+    title: 'sac prada',
+    category: 'Bag',
+    description: 'beautiful bag',
+    address: 'New York',
+    price_cents: '2000',
+    gender: 'Women',
     user_id: 2
   }
 
