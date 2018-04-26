@@ -21,7 +21,7 @@
           <div class="col-xs-9">
             <div class="description-container">
               <div class="user-infos">
-              <%= image_tag "https://vignette.wikia.nocookie.net/fr.starwars/images/3/39/Jabba_le_Hutt.png/revision/latest?cb=20170818180549", class: "avatar" %>
+              <%= cl_image_tag @product.user.avatar_url, class: "avatar" %>
                  <%= @product.user.first_name %>  <%= @product.created_at.strftime("%d/%m/%Y") %>
               </div>
               <div class="product-description text-center">

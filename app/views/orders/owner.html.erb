@@ -1,0 +1,36 @@
+<div class="container">
+  <h2><%= link_to "Placed orders as a buyer", orders_path %></h2>
+
+  <% if @owner_orders.empty? %>
+    <h1>You haven't received any order. Here you can see <%= link_to "upload a product", new_product_path %></h1>
+  <% else %>
+    <h1>Received orders</h1>
+    <table>
+      <% @owner_orders.each do |order| %>
+      <tr>
+        <td>Commande effectuée le <%= order.created_at %></td>
+        <td>Total : <%=  humanized_money_with_symbol(order.amount) %></td>
+        <td>Status : <%= order.status %>
+          <% if order.status == "pending_card" %>
+
+            <%= simple_form_for(order, method: :patch) do |f| %>
+              <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
+              <%= f.submit'Accept', class: 'btn btn-success' %>
+            <% end %>
+
+            <%= simple_form_for(order, method: :patch) do |f| %>
+              <%= f.input :status, :as => :hidden, :input_html => { :value => "Refused" } %>
+              <%= f.submit'Refuse', class: 'btn btn-danger' %>
+            <% end %>
+
+          <% end %></td>
+          <td>Order n° : <%= order.id %></td>
+        </tr>
+        <tr>
+          <td>Buyer : <%= order.user.first_name %></td>
+          <td>Description : <%= order.product.description %></td>
+        </tr>
+        <% end %>
+      </table>
+  <% end %>
+</div>

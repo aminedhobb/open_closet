@@ -18,8 +18,12 @@ users = [
     last_name:'LeHutt',
     email:'jabbalehutt@starwars.com',
     password:'bakjaelj',
-    id: 2
-    avatar: "https://vignette.wikia.nocookie.net/fr.starwars/images/3/39/Jabba_le_Hutt.png/revision/latest?cb=20170818180549"
+  },
+  {
+    first_name: 'Sebulba',
+    last_name: 'LeDug',
+    email: 'sebulba@starwars.com',
+    password: 'sebulba',
   }
 ]
 User.create!(users)
@@ -35,7 +39,7 @@ products = [
     address: '33 rue de lourmel Paris',
     price_cents: '2000',
     gender: 'Men',
-    user_id: 2
+    user_id: User.first.id
   },
   {
     title: 'chemise verte',
@@ -44,7 +48,7 @@ products = [
     address: 'rue imilchil Casablanca',
     price_cents: '200',
     gender: 'Unisex',
-    user_id: 2
+    user_id: User.first.id
   },
   {
     title: 'sac luis vuittan',
@@ -53,7 +57,7 @@ products = [
     address: 'rue de restinga Casablanca',
     price_cents: '4000',
     gender: 'Women',
-    user_id: 2
+    user_id: User.first.id
   },
   {
     title: 'dc shoes',
@@ -62,7 +66,7 @@ products = [
     address: 'rue curie Casablanca',
     price_cents: '400',
     gender: 'Men',
-    user_id: 2
+    user_id: User.first.id
   },
   {
     title: 'Beau costard',
@@ -71,7 +75,7 @@ products = [
     address: 'boulevard zerktouni Casablanca',
     price_cents: '5000',
     gender: 'Men',
-    user_id: 2
+    user_id: User.first.id
   },
   {
     title: 'Beau jean',
@@ -80,7 +84,7 @@ products = [
     address: 'rue deparcieux Paris',
     price_cents: '400',
     gender: 'Men',
-    user_id: 2
+    user_id: User.first.id
   },
   {
     title: 'chemise de ouf',
@@ -89,7 +93,7 @@ products = [
     address: 'rue de rennes Paris',
     price_cents: '1000',
     gender: 'Men',
-    user_id: 2
+    user_id: User.first.id
   },
   {
     title: 'sac prada',
@@ -98,7 +102,7 @@ products = [
     address: 'New York',
     price_cents: '2000',
     gender: 'Women',
-    user_id: 2
+    user_id: User.first.id
   }
 
 ]
