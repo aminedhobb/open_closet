@@ -1,1 +1,36 @@
-<h1>Show owner pending acceptance</h1>
+<div class="container">
+  <div class="product-infos-container">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="card">
+          <h1>Locataire</h1>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="card">
+          <div class="card-body">
+            <div class= "card-title">Checkout</div>
+            <div class="card subtitle">Price-per-day : <%=  humanized_money_with_symbol(@order.product.price) %></div>
+            <div class="card-text">TOTAL : <%=  humanized_money_with_symbol(@order.amount) %> </div>
+            <%= simple_form_for(@order, method: :patch) do |f| %>
+              <%= f.input :status, :as => :hidden, :input_html => { :value => "pending_acceptance" } %>
+              <%= f.input :redirect_path, :as => :hidden, :input_html => { :value => "index_renter"}  %>
+              <%= f.submit'Confirm Rent', class: 'btn btn-success' %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="card description owner">
+          <div class="card-body">
+            <div class= "card-title"> <%= cl_image_tag @order.user.avatar_url, class: "avatar" %> <strong> <%= @owner %></strong>  : Vendeur particulier </div>
+            <br>
+            <div class="card-text product-description">"<%= @order.product.description %>"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

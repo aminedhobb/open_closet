@@ -11,7 +11,7 @@
         <td>Commande effectuée le <%= order.created_at %></td>
         <td>Total : <%=  humanized_money_with_symbol(order.amount) %></td>
         <td>Status : <%= order.status %>
-          <% if order.status == "pending_card" %>
+          <% if order.status == "pending_acceptance" %>
 
             <%= simple_form_for(order, method: :patch) do |f| %>
               <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>

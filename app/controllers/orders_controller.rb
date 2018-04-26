@@ -8,7 +8,8 @@ class OrdersController < ApplicationController
     # else
     #   render 'index_renter'
     # end
-    @orders_pending = Order.where(status: "pending_card")
+    @payment_pending = Order.where(status: "pending_card")
+    @orders_pending = Order.where(status: "pending_acceptance")
     @orders_accepted = Order.where(status: "accepted")
     @orders_refused = Order.where(status: "refused")
     @orders_cancelled = Order.where(status: "cancelled")
