@@ -4,7 +4,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.product.user
+    user == record.product.user || user == record.user
   end
 
   def owner?

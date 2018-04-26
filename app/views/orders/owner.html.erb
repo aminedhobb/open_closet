@@ -15,11 +15,13 @@
 
             <%= simple_form_for(order, method: :patch) do |f| %>
               <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
+              <%= f.input :redirect_path, :as => :hidden, :input_html => { :value => "index"}  %>
               <%= f.submit'Accept', class: 'btn btn-success' %>
             <% end %>
 
             <%= simple_form_for(order, method: :patch) do |f| %>
               <%= f.input :status, :as => :hidden, :input_html => { :value => "Refused" } %>
+              <%= f.input :redirect_path, :as => :hidden, :input_html => { :value => "index"}  %>
               <%= f.submit'Refuse', class: 'btn btn-danger' %>
             <% end %>
 

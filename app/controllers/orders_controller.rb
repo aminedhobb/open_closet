@@ -65,10 +65,18 @@ class OrdersController < ApplicationController
       @order.status = "accepted"
     elsif order_params[:status] == "Refused"
       @order.status = "refused"
+    elsif order_params[:status] == "pending_acceptance"
+      @order.status = "pending_acceptance"
     end
     @order.save
+    if params[:order][:redirect_path] == "index"
+      redirect_to owner_orders_path
+    elsif params[:order][:redirect_path] == "index_renter"
+      redirect_to orders_path
+    elsif params[:order][:redirect_path] == "show"
+      redirect_to order_path(@order)
+    end
     authorize @order
-    redirect_to order_path(@order)
   end
 
   private
