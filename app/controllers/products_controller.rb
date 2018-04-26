@@ -14,6 +14,10 @@ class ProductsController < ApplicationController
       @products = @products.search_by_title_and_description(params[:title_or_description])
     end
 
+    if @products.empty?
+      render 'product_not_found'
+    end
+
     @markers = @products.map do |product|
       {
         lat: product.latitude,
@@ -44,7 +48,9 @@ class ProductsController < ApplicationController
           @product_image = @product.product_images.create!(:photo => a)
         end
       end
-      redirect_to products_path
+      flash[:notice] = "Your product is now online!"
+
+      redirect_to product_path(@product)
     else
       render :new
     end
