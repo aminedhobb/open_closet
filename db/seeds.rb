@@ -18,7 +18,7 @@ users = [
     last_name:'LeHutt',
     email:'jabbalehutt@starwars.com',
     password:'bakjaelj',
-    id: 2
+    id: 2,
     avatar: "https://vignette.wikia.nocookie.net/fr.starwars/images/3/39/Jabba_le_Hutt.png/revision/latest?cb=20170818180549"
   }
 ]
