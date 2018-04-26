@@ -7,6 +7,10 @@ class OrderPolicy < ApplicationPolicy
     user == record.product.user
   end
 
+  def owner?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope
