@@ -3,6 +3,7 @@ ruby '2.4.3'
 #faker
 gem 'faker'
 gem 'pundit'
+gem 'pg_search'
 
 #money money money
 gem 'money-rails'
