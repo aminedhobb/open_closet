@@ -2,6 +2,19 @@ class OrdersController < ApplicationController
   before_action :set_product, only: [:new, :create]
   def index
     @orders = Order.where(user: current_user)
+    render 'index_renter'
+
+    # if current_user == @orders.product.user
+    #   render 'index_owner'
+    # else
+    #   render 'index_renter'
+    # end
+    @orders_pending = Order.where(status: "pending_card")
+    @orders_accepted = Order.where(status: "accepted")
+    @orders_refused = Order.where(status: "refused")
+    @orders_cancelled = Order.where(status: "cancelled")
+    # authorize @order
+    @owner_orders = Order.joins(:product).where(product: { user_id: current_user.id })
   end
 
   def create
