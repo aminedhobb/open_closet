@@ -21,7 +21,7 @@
       <div class="col-xs-6">
         <div class="card description owner">
           <div class="card-body">
-            <div class= "card-title"> <%= cl_image_tag @owner.avatar_url %> <strong> <%= @owner %></strong>  : Vendeur particulier </div>
+            <div class= "card-title"> <%= cl_image_tag @order.user.avatar_url, class: "avatar" %> <strong> <%= @owner %></strong>  : Vendeur particulier </div>
             <br>
             <div class="card-text product-description">"<%= @order.product.description %>"</div>
           </div>
