@@ -14,7 +14,9 @@
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %>
 
-            <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, autofocus: true %>
+            <%= f.input :password, autocomplete: "off", hint: "Leave it blank if you don't want to change it", required: false, autofocus: true %>
+            <%= f.input :password_confirmation, required: false %>
+            <%= f.input :email, autocomplete: "off", required: false %>
             <%= f.input :first_name, autocomplete: "off", required: false %>
             <%= f.input :last_name, autocomplete: "off", required: false %>
             <%= f.input :avatar, label: "Profile picture" ,class: "avatar", required: false  %>
