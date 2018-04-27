@@ -33,6 +33,9 @@ class OrdersController < ApplicationController
     authorize @order
   end
 
+  def payment
+  end
+
   def show
     @order = Order.find(params[:id])
     @owner = @order.product.user.first_name
@@ -55,19 +58,33 @@ class OrdersController < ApplicationController
     elsif current_user == @order.product.user && @order.status == "refused"
       render 'show_owner_refused'
     end
-    #   current_user == @order.user && @order.status == "pending_acceptance"
-    # elsif
-    #   current_user == @order.user
   end
 
   def update
     @order = Order.find(params[:id])
+    authorize @order
     if order_params[:status] == "Accepted"
+      charge = Stripe::Charge.create(
+      customer:     current_user.stripe_customer_id,
+      amount:       @order.amount_cents,
+      description:  "Payment for order #{@order.id}",
+      currency:     @order.amount.currency
+      )
       @order.status = "accepted"
     elsif order_params[:status] == "Refused"
       @order.status = "refused"
     elsif order_params[:status] == "pending_acceptance"
       @order.status = "pending_acceptance"
+      while current_user.stripe_customer_id.nil?
+        customer = Stripe::Customer.create(
+        source: params[:stripeToken],
+        email:  params[:stripeEmail]
+        )
+
+        @stripe_customer_id = customer.id
+        current_user.stripe_customer_id = @stripe_customer_id
+        current_user.save
+      end
     end
     @order.save
     if params[:order][:redirect_path] == "index"
@@ -77,7 +94,9 @@ class OrdersController < ApplicationController
     elsif params[:order][:redirect_path] == "show"
       redirect_to order_path(@order)
     end
-    authorize @order
+  rescue Stripe::CardError => e
+    flash[:alert] = e.message
+    redirect_to order_path(@order)
   end
 
   private
@@ -88,5 +107,9 @@ class OrdersController < ApplicationController
 
   def set_product
     @product = Product.find(order_params[:product_id])
+  end
+
+  def set_order
+    @order = current_user.orders.where(status: 'pending_card').find(params[:order_id])
   end
 end
