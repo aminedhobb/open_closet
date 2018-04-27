@@ -1,35 +1,55 @@
 <div class="container">
-  <div class="product-infos-container">
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="card">
-          <h1>Locataire</h1>
-        </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="card">
-          <div class="card-body">
-            <div class= "card-title">Checkout</div>
-            <div class="card subtitle">Price-per-day : <%=  humanized_money_with_symbol(@order.product.price) %></div>
-            <div class="card-text">TOTAL : <%=  humanized_money_with_symbol(@order.amount) %> </div>
-            <%= simple_form_for(@order, method: :patch) do |f| %>
-              <%= f.input :status, :as => :hidden, :input_html => { :value => "pending_acceptance" } %>
-              <%= f.input :redirect_path, :as => :hidden, :input_html => { :value => "index_renter"}  %>
-              <%= f.submit'Confirm Rent', class: 'btn btn-success' %>
-              <% end %>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <div class="product-infos-container">
+        <h2 class="text-center">Your cart</h2>
+          <table>
+            <thead>
+              <tr>
+                <th class="image"></th>
+                <th class="product"></th>
+                <th class="ppd">Daily price</th>
+                <th class="total">TOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="image">
+                  <div class="product-image">
+                     <%= cl_image_tag @order.product.product_images.first.photo_url, class: "image"  %>
+                  </div>
+                </td>
+                <td class="product">
+                  <p class="renter">Owner : <%= @owner %></p>
+                  <div class="product-description">
+                    <%= @order.product.description %>
+                  </div>
+                </td>
+                <td class="ppd">
+                    <span class=money>
+                      <%=  humanized_money_with_symbol(@order.product.price) %>
+                    </span>
+                </td>
+                <td class="total">
+                    <span class=money>
+                      <strong>
+                        <%=  humanized_money_with_symbol(@order.amount) %>
+                      </strong>
+                    </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="checkout">
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-name="Rental"
+                  data-email="<%= current_user.email %>"
+                  data-description="Product <%= @order.id %>"
+                  data-amount="<%= @order.amount_cents %>"
+                  data-currency="<%= @order.amount.currency %>">
+              </script>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="card description owner">
-          <div class="card-body">
-            <div class= "card-title"> <%= cl_image_tag @order.user.avatar_url, class: "avatar" %> <strong> <%= @owner %></strong>  : Vendeur particulier </div>
-            <br>
-            <div class="card-text product-description">"<%= @order.product.description %>"</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
