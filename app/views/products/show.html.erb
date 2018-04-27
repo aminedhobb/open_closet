@@ -5,7 +5,7 @@
         <h2 class="text-center"> <%= @product.title.capitalize %> </h2>
         <div class="row">
           <div class="col-xs-4">
-            <%= render 'carrousel' %>
+            <%= render 'carousel' %>
           </div>
           <div class="col-xs-5">
             <div id="map" style="width: 100%; height: 300px;" data-markers="<%= @markers.to_json %>">
