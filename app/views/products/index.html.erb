@@ -1,23 +1,33 @@
 <div class="index-content">
-  <div class="cards-container">
-    <div class = "row">
+  <div class = "row">
+
+  <div class="cards-product-container">
       <% @products.each do |product| %>
         <%= link_to product_path(product) do %>
-        <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="col-xs-4">
           <% if  product.product_images.empty? %>
-            <div class="card" >
-              <%= product.title %>
-            </div>
+<!--             <div class="card-product" >
+              <p> No image found </p>
+            </div> -->
           <% else %>
-              <div class="card" style="background-image: url(<%= product.product_images.first.photo_url %>);" >
-              <%= product.title %>
+          <div class="card-product">
+            <div class="card-product-body" style="background-image: url(<%= product.product_images.first.photo_url %>);" >
             </div>
+            <div class="card-product-footer">
+              <div class="card-product-footer-text">
+              <h5> <%= product.title %> </h5>
+              <p><%= product.created_at.strftime("%d/%m/%Y") %></p>
+              </div>
+              <%= cl_image_tag product.user.avatar_url, class: "avatar" %>
+            </div>
+          </div>
           <% end %>
         </div>
       <% end %>
     <% end %>
     </div>
   </div>
+
   <div id="map" data-markers="<%= @markers.to_json %>">
   </div>
 </div>
