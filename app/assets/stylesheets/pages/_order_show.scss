@@ -1,0 +1,74 @@
+.renter {
+  color: $opurple;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+}
+
+.checkout {
+  text-align : right;
+}
+#cartform {
+    font-family: proxima-nova, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: black;
+}
+
+tbody{
+  line-height: 20px;
+  font-size: 14px;
+  color: #555555;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.image {
+  text-align: center;
+  width: 150px;
+  height: 100px;
+}
+
+.product-description {
+  font-size: 14px;
+  text-decoration: none;
+  font-style: normal;
+}
+
+table tr td, table tr th {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+    text-align: center;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+strong {
+  font-weight: bold;
+}
+
+
