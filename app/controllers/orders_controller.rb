@@ -33,6 +33,9 @@ class OrdersController < ApplicationController
     authorize @order
   end
 
+  def payment
+  end
+
   def show
     @order = Order.find(params[:id])
     @owner = @order.product.user.first_name
@@ -68,6 +71,14 @@ class OrdersController < ApplicationController
       @order.status = "refused"
     elsif order_params[:status] == "pending_acceptance"
       @order.status = "pending_acceptance"
+      customer = Stripe::Customer.create(
+      source: params[:stripeToken],
+      email:  params[:stripeEmail]
+      )
+
+      @stripe_customer_id = customer.id
+      current_user.stripe_customer_id = @stripe_customer_id
+      current_user.save
     end
     @order.save
     if params[:order][:redirect_path] == "index"
@@ -88,5 +99,9 @@ class OrdersController < ApplicationController
 
   def set_product
     @product = Product.find(order_params[:product_id])
+  end
+
+  def set_order
+    @order = current_user.orders.where(status: 'pending_card').find(params[:order_id])
   end
 end
