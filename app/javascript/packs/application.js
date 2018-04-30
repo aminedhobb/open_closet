@@ -11,3 +11,6 @@ setInterval(function(){
         $(this).fadeIn(400);
     });
 }, 4000);
+
+import { dateValidation } from '../components/date_validation';
+dateValidation();
