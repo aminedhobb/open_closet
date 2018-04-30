@@ -5,4 +5,8 @@ class Order < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   monetize :amount_cents
+  validates_with OrderValidator
+
+  private
+
 end
