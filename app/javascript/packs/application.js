@@ -1,5 +1,10 @@
 import "bootstrap";
 
+$('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
 var keywords = ["wedding", "party", "weekend escape", "festival"];
 var count = 1;
 setInterval(function(){
@@ -11,3 +16,4 @@ setInterval(function(){
         $(this).fadeIn(400);
     });
 }, 4000);
+

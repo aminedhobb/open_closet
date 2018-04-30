@@ -1,22 +1,17 @@
-<div class="container">
-  <h2><%= link_to "Received orders as an owner", owner_orders_path %></h2>
-  <% if @orders.empty? %>
-    <h1>You haven't place any order yet ! Here you can see <%= link_to "our products", products_path %></h1>
-    <% else %>
-  <h1>My orders</h1>
-  <table>
-    <% @orders.each do |order| %>
-    <tr>
-      <td>Commande effectuée le <%= order.created_at %></td>
-      <td>Total : <%=  humanized_money_with_symbol(order.amount) %></td>
-      <td>Status : <%= order.status %></td>
-      <td>Order n° : <%= order.id %></td>
-    </tr>
-    <tr>
-      <td>Product : <%= order.product.title %></td>
-      <td>Description : <%= order.product.description %></td>
-    </tr>
-    <% end %>
-  </table>
-  <% end %>
+<div class="container" style="margin-top: 25px">
+  <%= link_to 'Owner Dashboard', owner_orders_path %>
+  <h1>Buyer Dashboard</h1>
+  <div class="row">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#pending" aria-controls="pending" role="tab" data-toggle="tab">Pending Orders</a></li>
+      <li role="presentation"><a href="#accepted" aria-controls="accepted" role="tab" data-toggle="tab">Accepted Orders</a></li>
+      <li role="presentation"><a href="#refused" aria-controls="refused" role="tab" data-toggle="tab">Refused Orders</a></li>
+    </ul>
+  </div>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="pending"><%= render 'pending_orders' %></div>
+    <div role="tabpanel" class="tab-pane" id="accepted"><%= render 'accepted_orders' %></div>
+    <div role="tabpanel" class="tab-pane" id="refused"><%= render 'refused_orders' %></div>
+  </div>
 </div>
