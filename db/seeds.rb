@@ -18,6 +18,7 @@ users = [
     last_name:'LeHutt',
     email:'jabbalehutt@starwars.com',
     password:'jabbajabba',
+    avatar: 'http://res.cloudinary.com/do4jeuium/image/upload/v1525085589/hnd9kwhtlhl4i89wtmsl.png',
   },
   {
     first_name: 'Sebulba',
