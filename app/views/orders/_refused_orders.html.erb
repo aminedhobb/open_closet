@@ -1,0 +1,38 @@
+<% if @orders.where(status:"refused").empty? %>
+    <h3>You haven't any refused orders ! Here you can see <%= link_to "our products", products_path %></h3>
+<% else %>
+      <% @orders.where(status:"refused").each do |order| %>
+        <% if  order.product.product_images.empty? %>
+          <div class="row carder bg-light mb-3">
+            <div class="col-xs-3">
+              <div class="card-body"><%= order.product.title %></div>
+              <div class="card-body"><%= order.product.description %></div>
+            </div>
+            <div class="col-xs-4">
+              <div class="card-body">From <%= order.start_date %> to <%= order.end_date %></div>
+            </div>
+            <div class="col-xs-2">
+              <div class="card-body"><strong>Total : <%= humanized_money_with_symbol(order.amount) %></strong></div>
+            </div>
+          </div>
+        <% else %>
+    <div class="row carder bg-light mb-3">
+      <div class="col-xs-1">
+        <div class="card-body image-order"><%= image_tag(order.product.product_images.first.photo_url, class: "image-order") %></div>
+      </div>
+      <div class="col-xs-3">
+        <div class="card-body title"><%= order.product.title.capitalize %></div>
+        <div class="card-body"><%= order.product.description %></div>
+      </div>
+      <div class="col-xs-3">
+          <div class="card-body"><%= cl_image_tag order.product.user.avatar_url, class: "avatar" %>  <%= order.product.user.first_name %></div>
+      </div>
+      <div class="col-xs-4">
+        <div class="card-body">From <%= l(order.start_date, format: :long) %> to <%= l(order.end_date, format: :long) %></div>
+        <div class="card-body"><strong>Total : <%= humanized_money_with_symbol(order.amount) %></strong>
+        </div>
+      </div>
+    </div>
+        <% end %>
+      <% end %>
+<% end %>

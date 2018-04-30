@@ -1,5 +1,10 @@
 import "bootstrap";
 
+$('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
 var keywords = ["wedding", "party", "weekend escape", "festival"];
 var count = 1;
 setInterval(function(){
@@ -12,5 +17,4 @@ setInterval(function(){
     });
 }, 4000);
 
-import { dateValidation } from '../components/date_validation';
-dateValidation();
+

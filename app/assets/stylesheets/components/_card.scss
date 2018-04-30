@@ -45,3 +45,27 @@ h4 {
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
 }
+
+.bg-light {
+    background-color: #f8f9fa!important;
+}
+.carder {
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.image-order {
+  max-width: 75px;
+}
+.title {
+  font-weight: bold;
+}
