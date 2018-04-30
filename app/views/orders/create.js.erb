@@ -1,0 +1,8 @@
+function refreshForm(innerHTML) {
+  const newReviewForm = document.getElementById('new_order');
+  newReviewForm.innerHTML = innerHTML;
+}
+
+<% if @order.errors.any? %>
+  refreshForm('<%= j render "products/order_form", product: @product, order: @rorder %>');
+<% end %>

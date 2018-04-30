@@ -1,7 +1,7 @@
-<%= simple_form_for(@order, method: :post, url: orders_path) do |f| %>
+<%= simple_form_for(@order, method: :post, url: orders_path, remote: true) do |f| %>
   <%= f.input :product_id, :as => :hidden, :input_html => { :value => @product.id } %>
-  <%= f.input :start_date, as: :date, html5: true, label: "From" %>
-  <%= f.input :end_date, as: :date, html5: true, label: "To"%>
+  <%= f.input :start_date, as: :date, html5: true, label: "From" , id: "start_date" %>
+  <%= f.input :end_date, as: :date, html5: true, label: "To", id: "end_date"%>
   <p>Price per day: <%= humanized_money_with_symbol(@product.price) %></p>
   <%= f.submit'Rent', class: 'btn btn-primary' %>
 <% end %>

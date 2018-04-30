@@ -38,10 +38,21 @@ class OrdersController < ApplicationController
 
     end
 
+    # if @order.save
+    #    redirect_to order_path(@order)
+    #  else
+    #   render 'products/show'
+    # end
     if @order.save
-       redirect_to order_path(@order)
-     else
-      render 'products/show'
+      respond_to do |format|
+        format.html { redirect_to order_path(@order) }
+        format.js { render :js => "window.location.href='"+order_path(@order)+"'"} # <-- will render `app/views/reviews/create.js.erb`
+      end
+    else
+      respond_to do |format|
+        format.html { render 'products/show' }
+        format.js  # <-- idem
+      end
     end
 
     authorize @order
