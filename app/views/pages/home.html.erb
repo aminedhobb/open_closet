@@ -1,11 +1,52 @@
 <div class="banner">
   <div class="banner-content text-center">
     <h1>Open Closet</h1>
-    <p> Have everything to wear for your next trip</p>
+    <p> Have everything to wear for your <span class="keyword" style="font-style: italic">meeting </span></p>
     <%= form_tag products_path, class: 'form-inline', method: :get do %>
     <%= text_field_tag :title_or_description, params[:title_or_description], class: "form-control", placeholder: "Shirt, Pants, bag ..."%>
     <%= text_field_tag :address, params[:address], class: "form-control home-search", placeholder: "Destination, City, Address ...", id: "product_address"%>
     <%= submit_tag("Search", class: "btn btn-secondary") %>
     <% end %>
+  </div>
+</div>
+
+<div class="row column">
+  <div class="oc-container text-center">
+    <h1 class="oc-title">How Open Closet Works</h1>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="oc-number">
+        <h2>1</h2>
+        </div>
+        <div class="oc-title">
+        <h4>Select a Style</h4>
+        </div>
+        <div class="oc-description">
+        <p>Pick the style you love</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="oc-number">
+        <h2>2</h2>
+        </div>
+        <div class="oc-title">
+        <h4>Book your Outfit</h4>
+        </div>
+        <div class="oc-description">
+        <p>Select your date and the duration you need it for on our booking calendar</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="oc-number">
+        <h2>3</h2>
+        </div>
+        <div class="oc-title">
+        <h4>Pickup your Outfit</h4>
+        </div>
+        <div class="oc-description">
+        <p>Once you've received compliments on your look, review us</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

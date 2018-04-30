@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     end
 
     if params[:title_or_description].present?
-      @products = @products.search_by_title_and_description(params[:title_or_description])
+      @products = @products.search_by_title_and_description_and_category(params[:title_or_description])
     end
 
     if @products.empty?
@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.price_cents *= 100
+    @product.price_cents *= 100 if @product.price_cents.present?
     @product.user = current_user
 
     if @product.save
@@ -73,13 +73,8 @@ class ProductsController < ApplicationController
 
   def show
     @order = Order.new
+    @product_orders = @product.orders
     @product_images = @product.product_images
-    @markers =
-      [{
-        lat: @product.latitude,
-        lng: @product.longitude,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-      }]
     authorize @product
   end
 
