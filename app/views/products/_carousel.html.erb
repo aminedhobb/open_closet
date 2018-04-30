@@ -1,20 +1,20 @@
 
 
-<% unless @product_images.empty? %>
+<% unless @product.product_images.empty? %>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <% if @product_images.length > 1 %>
+    <% if @product.product_images.length > 1 %>
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <% for i in (1..@product_images.length-1) do %>
+        <% for i in (1..@product.product_images.length-1) do %>
           <li data-target="#myCarousel" data-slide-to="<%= i %>"></li>
         <% end %>
       </ol>
     <% end %>
     <div class="carousel-inner">
       <div class="item active" style="height: 400px">
-        <%= image_tag(@product_images.first.photo_url) %>
+        <%= image_tag(@product.product_images.first.photo_url) %>
       </div>
-      <% @product_images.drop(1).each do |p| %>
+      <% @product.product_images.drop(1).each do |p| %>
       <div class="item" style="height: 400px">
         <%= image_tag(p.photo_url) %>
       </div>

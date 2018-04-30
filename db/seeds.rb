@@ -111,3 +111,27 @@ Product.create!(products)
 
 puts "products created !"
 
+puts "creating orders..."
+
+orders = [
+  {
+    amount_cents: 3 * Product.first.price_cents,
+    start_date: Date.today,
+    end_date: Date.today + 3,
+    product_id: Product.first.id,
+    user_id: Product.first.user.id
+  },
+  {
+    status: "accepted",
+    amount_cents: 3 * Product.last.price_cents,
+    start_date: Date.today + 2,
+    end_date: Date.today + 5,
+    product_id: Product.last.id,
+    user_id: Product.last.user.id
+  }
+]
+
+Order.create!(orders)
+
+puts "orders created !"
+

@@ -5,18 +5,18 @@
         <h2 class="text-center"> <%= @product.title.capitalize %> </h2>
         <div class="row">
           <div class="col-xs-4">
-            <%= render 'carousel' %>
+            <%= render 'products/carousel' %>
           </div>
-          <div class="col-xs-5">
-            <div id="map" style="width: 100%; height: 300px;" data-markers="<%= @markers.to_json %>">
+          <div class="col-xs-4">
+            <div id="map" style="width: 100%; height: 300px;" data-markers="<%= [{lat: @product.latitude, lng: @product.longitude}].to_json%>">
             </div>
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-4">
           <% if policy(@product).update? %>
             <%= link_to "Edit your product", edit_product_path(@product), class: "btn btn-primary" %>
           <% else %>
             <div class="form-rent-container">
-              <%= render 'order_form' %>
+              <%= render 'products/order_form' %>
             </div>
           <% end %>
           </div>
