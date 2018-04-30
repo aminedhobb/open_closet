@@ -9,7 +9,7 @@
     <% @orders.each do |order| %>
     <tr>
       <td>Commande effectuée le <%= order.created_at %></td>
-      <td>Total : <%=  humanized_money_with_symbol(order.amount) %></td>
+      <td class="total">Total : <%=  humanized_money_with_symbol(order.amount) %></td>
       <td>Status : <%= order.status %></td>
       <td>Order n° : <%= order.id %></td>
     </tr>
