@@ -12,9 +12,13 @@
             </div>
           </div>
           <div class="col-xs-3">
+          <% if policy(@product).update? %>
+            <%= link_to "Edit your product", edit_product_path(@product), class: "btn btn-primary" %>
+          <% else %>
             <div class="form-rent-container">
               <%= render 'order_form' %>
             </div>
+          <% end %>
           </div>
         </div>
         <div class="row">
@@ -29,11 +33,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-3">
-           <% if policy(@product).update? %>
-             <br>
-            <%= link_to "Edit your product", edit_product_path(@product), class: "btn btn-primary" %>
-          <% end %>
+
 
         </div>
       </div>
