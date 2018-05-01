@@ -11,11 +11,11 @@
       </ol>
     <% end %>
     <div class="carousel-inner">
-      <div class="item active" style="height: 400px">
+      <div class="item active" >
         <%= image_tag(@product.product_images.first.photo_url) %>
       </div>
       <% @product.product_images.drop(1).each do |p| %>
-      <div class="item" style="height: 400px">
+      <div class="item" >
         <%= image_tag(p.photo_url) %>
       </div>
       <% end %>
