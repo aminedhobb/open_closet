@@ -35,6 +35,7 @@ end
 
 group :development, :test do
   gem 'pry-byebug'
+  gem 'rspec-rails', '~> 3.7'
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'

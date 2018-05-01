@@ -7,6 +7,4 @@ class Order < ApplicationRecord
   monetize :amount_cents
   validates_with OrderValidator
 
-  private
-
 end
