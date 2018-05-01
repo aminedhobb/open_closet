@@ -19,7 +19,6 @@ class OrderValidator < ActiveModel::Validator
           end
         end
       end
-
     end
   end
 end
