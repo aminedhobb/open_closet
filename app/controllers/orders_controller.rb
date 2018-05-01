@@ -24,10 +24,21 @@ class OrdersController < ApplicationController
         @number_of_days = Date.parse("#{@order.end_date}") - Date.parse("#{@order.start_date}")
         @order.amount_cents = @product.price_cents * @number_of_days
     end
+    # if @order.save
+    #    redirect_to order_path(@order)
+    #  else
+    #   render 'products/show'
+    # end
     if @order.save
-       redirect_to order_path(@order)
+      respond_to do |format|
+        format.html { redirect_to order_path(@order) }
+        format.js { render :js => "window.location.href='"+order_path(@order)+"'"} # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'products/show'
+      respond_to do |format|
+        format.html { render 'products/show' }
+        format.js  # <-- idem
+      end
     end
     authorize @order
   end
