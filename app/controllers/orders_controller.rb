@@ -78,7 +78,7 @@ class OrdersController < ApplicationController
     authorize @order
     if order_params[:status] == "Accepted"
       charge = Stripe::Charge.create(
-      customer:     current_user.stripe_customer_id,
+      customer:     @order.user.stripe_customer_id,
       amount:       @order.amount_cents,
       description:  "Payment for order #{@order.id}",
       currency:     @order.amount.currency
