@@ -24,11 +24,7 @@ class OrdersController < ApplicationController
         @number_of_days = Date.parse("#{@order.end_date}") - Date.parse("#{@order.start_date}")
         @order.amount_cents = @product.price_cents * @number_of_days
     end
-    # if @order.save
-    #    redirect_to order_path(@order)
-    #  else
-    #   render 'products/show'
-    # end
+
     if @order.save
       respond_to do |format|
         format.html { redirect_to order_path(@order) }
@@ -77,7 +73,7 @@ class OrdersController < ApplicationController
     authorize @order
     if order_params[:status] == "Accepted"
       charge = Stripe::Charge.create(
-      customer:     current_user.stripe_customer_id,
+      customer:     @order.user.stripe_customer_id,
       amount:       @order.amount_cents,
       description:  "Payment for order #{@order.id}",
       currency:     @order.amount.currency
