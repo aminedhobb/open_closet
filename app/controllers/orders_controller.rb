@@ -3,17 +3,11 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.where(user: current_user)
-    # if current_user == @orders.product.user
-    #   render 'index_owner'
-    # else
-    #   render 'index_renter'
-    # end
     @payment_pending = Order.where(status: "pending_card")
     @orders_pending = Order.where(status: "pending_acceptance")
     @orders_accepted = Order.where(status: "accepted")
     @orders_refused = Order.where(status: "refused")
     @orders_cancelled = Order.where(status: "cancelled")
-    # authorize @order
     @owner_orders = Order.joins(:product).where(product: { user_id: current_user.id })
   end
 
@@ -27,23 +21,14 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = current_user
     if @order.end_date.present? && @order.start_date.present?
-      # if !available?
-      #   flash[:alert] = "Not available at this dates"
-      #   redirect_to product_path(@product)
-      #   authorize @order
-      #   return
-      # else
         @number_of_days = Date.parse("#{@order.end_date}") - Date.parse("#{@order.start_date}")
         @order.amount_cents = @product.price_cents * @number_of_days
-
     end
-
     if @order.save
        redirect_to order_path(@order)
-     else
+    else
       render 'products/show'
     end
-
     authorize @order
   end
 
@@ -102,7 +87,7 @@ class OrdersController < ApplicationController
         current_user.save
       end
     end
-    @order.save
+    @order.save!
     if params[:order][:redirect_path] == "index"
       redirect_to owner_orders_path
     elsif params[:order][:redirect_path] == "index_renter"
@@ -113,23 +98,13 @@ class OrdersController < ApplicationController
   rescue Stripe::CardError => e
     flash[:alert] = e.message
     redirect_to order_path(@order)
+
   end
 
   private
 
   def order_params
     params.require(:order).permit(:start_date, :end_date, :product_id, :user, :status)
-  end
-
-  def available?
-    answer = true
-    orders = @product.orders
-    orders.each do |order|
-      if ((@order.start_date >= order.start_date && @order.start_date <= order.end_date) || (@order.end_date >= order.start_date && @order.end_date <= order.end_date))
-          answer = false
-      end
-    end
-    return answer
   end
 
   def set_product

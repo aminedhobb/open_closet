@@ -15,7 +15,6 @@ class OrderValidator < ActiveModel::Validator
           record.errors.add(:end_date, 'is not available')
         end
       end
-
     end
   end
 end

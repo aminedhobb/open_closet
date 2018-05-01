@@ -1,5 +1,5 @@
 <% if @owner_orders.where(status:"refused").empty? %>
-  <h3>You haven't received any order. Here you can see <%= link_to "upload a product", new_product_path %></h3>
+  <h3>You haven't received any order. Here you can <%= link_to "upload a product", new_product_path %></h3>
 <% else %>
     <% @owner_orders.where(status:"refused").each do |order| %>
     <div class="row carder bg-light mb-3">
