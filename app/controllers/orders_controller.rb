@@ -3,13 +3,11 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.where(user: current_user)
-
     @payment_pending = Order.where(status: "pending_card")
     @orders_pending = Order.where(status: "pending_acceptance")
     @orders_accepted = Order.where(status: "accepted")
     @orders_refused = Order.where(status: "refused")
     @orders_cancelled = Order.where(status: "cancelled")
-
     @owner_orders = Order.joins(:product).where(product: { user_id: current_user.id })
   end
 
@@ -23,10 +21,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = current_user
     if @order.end_date.present? && @order.start_date.present?
-
         @number_of_days = Date.parse("#{@order.end_date}") - Date.parse("#{@order.start_date}")
         @order.amount_cents = @product.price_cents * @number_of_days
-
     end
 
     if @order.save
@@ -40,7 +36,6 @@ class OrdersController < ApplicationController
         format.js  # <-- idem
       end
     end
-
     authorize @order
   end
 
@@ -99,7 +94,7 @@ class OrdersController < ApplicationController
         current_user.save
       end
     end
-    @order.save
+    @order.save!
     if params[:order][:redirect_path] == "index"
       redirect_to owner_orders_path
     elsif params[:order][:redirect_path] == "index_renter"
@@ -110,6 +105,7 @@ class OrdersController < ApplicationController
   rescue Stripe::CardError => e
     flash[:alert] = e.message
     redirect_to order_path(@order)
+
   end
 
   private
