@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'owner', to: "orders#owner"
       get 'renter', to: "orders#renter"
     end
+    resources :messages
   end
   resources :reviews, only: [:edit, :update, :destroy]
   devise_for :users

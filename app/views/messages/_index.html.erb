@@ -1,0 +1,6 @@
+<ul class="list-unstyled">
+<% order.messages.each do |message| %>
+<li class="padded-1em"><%= message.content %></li>
+<% end %>
+</ul>
+<%= link_to 'Send', orders_path %>

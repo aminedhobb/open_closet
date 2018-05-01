@@ -1,0 +1,4 @@
+<%= simple_form_for [@order, @message] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit "Send", class: "btn btn-primary" %>
+<% end %>
