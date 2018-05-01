@@ -47,6 +47,7 @@ class ProductsController < ApplicationController
           @product_image = @product.product_images.create!(:photo => a)
         end
       end
+      ProductMailer.creation_confirmation(@product).deliver_now
       flash[:notice] = "Your product is now online!"
       redirect_to product_path(@product)
     else
