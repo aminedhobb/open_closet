@@ -84,9 +84,12 @@ class OrdersController < ApplicationController
       currency:     @order.amount.currency
       )
       @order.status = "accepted"
+      flash[:notice] = "The order is now confirmed!"
     elsif order_params[:status] == "Refused"
       @order.status = "refused"
+      flash[:alert] = "The order is cancelled"
     elsif order_params[:status] == "pending_acceptance"
+      flash[:notice] = "Your order has been taken into account and the owner has been informed"
       @order.status = "pending_acceptance"
       while current_user.stripe_customer_id.nil?
         customer = Stripe::Customer.create(
