@@ -11,11 +11,19 @@
   </head>
   <body>
     <div>
-      <%= render 'shared/navbar' %>
+      <% if params["action"] == "home" %>
+        <%= render 'shared/navbar' %>
+      <% else %>
+        <%= render 'shared/navbar_else' %>
+      <% end %>
       <%= render 'shared/flashes' %>
       <%= yield %>
     </div>
-    <%= render 'shared/footer' %>
+      <% if params["action"] == "home" %>
+        <%= render 'shared/footer' %>
+      <% else %>
+        <%= render 'shared/footer_else' %>
+      <% end %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js" %>
