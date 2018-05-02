@@ -10,8 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Add a product", new_product_path, class: "navbar-wagon-item navbar-wagon-link-else" %>
-      <%= link_to "Saved", "#", class: "navbar-wagon-item navbar-wagon-link-else" %>
+      <%= link_to "Add a product", new_product_path, class: "navbar-wagon-item navbar-wagon-link-else btn btn-outline-primary"%>
       <%= link_to "Orders", orders_path, class: "navbar-wagon-item navbar-wagon-link-else" %>
       <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link-else" %>
 
