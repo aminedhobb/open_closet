@@ -2,6 +2,6 @@
   flex: 0 0 450px;
   height: 300px;
   position: sticky !important; /* !important to override Gmaps inline CSS */
-
+  position: -webkit-sticky;
   top: 0 !important;
 }
