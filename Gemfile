@@ -17,6 +17,7 @@ gem 'rails', '5.1.6'
 gem 'redis'
 gem 'geocoder'
 gem 'devise'
+gem 'postmark-rails'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
@@ -31,6 +32,7 @@ gem 'pg_search'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'letter_opener'
 end
 
 group :development, :test do

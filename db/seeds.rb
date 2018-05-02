@@ -34,72 +34,72 @@ puts "User created!"
 puts "Creating products.."
 products = [
   {
-    title: 'pull rose',
+    title: 'Pink Sweater',
     category: 'Sweater',
-    description: 'magnifique pull rose',
+    description: 'All goys will love your amazing pink sweater',
     address: '33 rue de lourmel Paris',
     price_cents: '2000',
     gender: 'Men',
     user_id: User.first.id
   },
   {
-    title: 'chemise verte',
+    title: 'Green Shirt',
     category: 'Shirt',
-    description: 'magnifique chemise verte',
+    description: 'You will seem very trendy with this green shirt',
     address: 'rue imilchil Casablanca',
     price_cents: '200',
     gender: 'Unisex',
     user_id: User.first.id
   },
   {
-    title: 'sac luis vuittan',
+    title: 'Louis Vuitton Bag',
     category: 'Bag',
-    description: 'magnifique sac à main',
+    description: 'With this classic Louis Vuitton bag, you will get a lot of reviews from all jealous girls',
     address: 'rue de restinga Casablanca',
     price_cents: '4000',
     gender: 'Women',
     user_id: User.first.id
   },
   {
-    title: 'dc shoes',
+    title: 'DC Shoes',
     category: 'Shoes',
-    description: 'magnifique sac à main',
+    description: 'You will like this nice DC shoes',
     address: 'rue curie Casablanca',
     price_cents: '400',
     gender: 'Men',
     user_id: User.first.id
   },
   {
-    title: 'Beau costard',
-    category: 'Costume',
-    description: 'magnifique costard',
+    title: 'Classic Suit',
+    category: 'Suit',
+    description: 'You will shine with this classic suit',
     address: 'boulevard zerktouni Casablanca',
     price_cents: '5000',
     gender: 'Men',
     user_id: User.first.id
   },
   {
-    title: 'Beau jean',
+    title: 'Nice Pant',
     category: 'Pant',
-    description: 'magnifique jean',
+    description: 'You are the king of the night with this amazing pant',
     address: 'rue deparcieux Paris',
     price_cents: '400',
     gender: 'Men',
     user_id: User.first.id
   },
   {
-    title: 'chemise de ouf',
+    title: 'Crazy shirt',
     category: 'Shirt',
-    description: 'magnifique chemise',
+    description: 'You will never regret this crazy shirt',
     address: 'rue de rennes Paris',
     price_cents: '1000',
     gender: 'Men',
     user_id: User.first.id
   },
   {
-    title: 'sac prada',
+    title: 'Prada bag',
     category: 'Bag',
-    description: 'beautiful bag',
+    description: 'With this nice Prada bag, you will feel the rythm of the fashion week ;)',
     address: 'New York',
     price_cents: '2000',
     gender: 'Women',
