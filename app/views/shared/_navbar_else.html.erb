@@ -1,7 +1,7 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon-else">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo_ecriture_gris.png", height: 50 %>
+    <%= image_tag "logo_fond_gris.png", height: 50 %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -10,10 +10,10 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Add a product", new_product_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Saved", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Orders", orders_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Add a product", new_product_path, class: "navbar-wagon-item navbar-wagon-link-else" %>
+      <%= link_to "Saved", "#", class: "navbar-wagon-item navbar-wagon-link-else" %>
+      <%= link_to "Orders", orders_path, class: "navbar-wagon-item navbar-wagon-link-else" %>
+      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link-else" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -56,4 +56,3 @@
     </div>
   </div>
 </div>
-
