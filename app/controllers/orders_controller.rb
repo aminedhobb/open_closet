@@ -79,6 +79,7 @@ class OrdersController < ApplicationController
       currency:     @order.amount.currency
       )
       @order.status = "accepted"
+      refuse_invalids(@order)
       flash[:notice] = "The order is now confirmed!"
     elsif order_params[:status] == "Refused"
       @order.status = "refused"
@@ -116,6 +117,20 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:start_date, :end_date, :product_id, :user, :status)
   end
+
+  def refuse_invalids(order_accepted)
+    orders = order_accepted.product.orders
+    orders.each do |order|
+      unless order == order_accepted
+        if order.start_date >= order_accepted.start_date && order.start_date <= order_accepted.end_date
+          order.update(status: "refused")
+        elsif order.end_date >= order_accepted.start_date && order.end_date <= order_accepted.end_date
+          order.update(status: "refused")
+        end
+      end
+    end
+  end
+
 
   def set_product
     @product = Product.find(order_params[:product_id])
