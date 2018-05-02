@@ -11,10 +11,10 @@ class OrderValidator < ActiveModel::Validator
       unless orders.empty?
         orders.each do |order|
           unless order.id == record.id
-            if order.start_date >= record.start_date && order.start_date <= record.end_date
-              record.errors.add(:start_date, 'is not available')
-            elsif order.end_date >= record.start_date && order.end_date <= record.end_date
-              record.errors.add(:end_date, 'is not available')
+            if record.start_date >= order.start_date && record.start_date <= order.end_date && record.id.nil?
+                record.errors.add(:start_date, 'is not available')
+            elsif record.end_date >= order.start_date && record.end_date <= order.end_date && record.id.nil?
+                record.errors.add(:end_date, 'is not available')
             end
           end
         end
