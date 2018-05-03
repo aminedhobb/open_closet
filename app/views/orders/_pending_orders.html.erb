@@ -25,7 +25,7 @@
         <div class="card-body"><%= order.product.description %></div>
       </div>
       <div class="col-xs-3">
-          <div class="card-body"><%= cl_image_tag order.product.user.avatar_url, class: "avatar" %>  <%= order.product.user.first_name %></div>
+          <div class="card-body"><%= cl_image_tag order.product.user.avatar, class: "avatar" %>  <%= order.product.user.first_name %></div>
       </div>
       <div class="col-xs-4">
         <div class="card-body">From <%= l(order.start_date, format: :long) %> to <%= l(order.end_date, format: :long) %></div>
