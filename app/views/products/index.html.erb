@@ -15,7 +15,7 @@
                 <% end %>
                 <div class="card-product-footer">
                   <div class="card-product-footer-text">
-                    <h5> <%= product.title.capitalize %> </h5>
+                    <h5> <%= product.title %> </h5>
                     <p><strong><%= humanized_money_with_symbol(product.price) %> </strong> per day</p>
                   </div>
                   <%= cl_image_tag product.user.avatar_url, class: "avatar" %>
