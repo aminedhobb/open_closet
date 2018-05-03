@@ -10,7 +10,7 @@
                   <div class="card-product-body" >
                   </div>
                 <% else %>
-                  <div class="card-product-body" style="background-image: url(<%= product.product_images.order(id: :desc).first.photo_url %>);" >
+                  <div class="card-product-body" style="background-image: url(<%= product.product_images.order(id: :desc).last.photo_url %>);" >
                   </div>
                 <% end %>
                 <div class="card-product-footer">
