@@ -3,18 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= favicon_link_tag %>
-
-    <title>Open Closet - Rent clothes everywhere</title>
     <meta name="description" content="<%= meta_description %>">
-
-    <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= request.original_url %>" />
     <meta property="og:image" content="<%= meta_image %>" />
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
+    <%= favicon_link_tag %>
+
+    <title>Open Closet - Rent clothes everywhere</title>
+
+    <!-- Facebook Open Graph data -->
+
 <!--
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %> -->
@@ -22,7 +23,6 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <%= meta_title %>
     <div>
       <% if params["action"] == "home" %>
         <%= render 'shared/navbar' %>
